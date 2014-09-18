@@ -7,18 +7,13 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Decisions
     public class Decision1 : Decision
     {
         public bool flag;
-        protected override HokeyNode Branch
+        protected override INode Branch
         {
             get
             {
-                HokeyNode node;
+                INode node;
                 if (flag) node = new TestAction();
                 else node = new TestAction1();
-
-                node.Game = Game;
-                node.World = World;
-                node.Hockeyist = Hockeyist;
-                node.Move = Move;
 
                 return node;
 

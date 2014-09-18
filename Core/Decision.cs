@@ -2,11 +2,11 @@
 
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core
 {
-    public abstract class Decision: HokeyNode
+    public abstract class Decision: INode
     {
-        protected abstract HokeyNode Branch { get; set; }
+        protected abstract INode Branch { get; set; }
 
-        public override void Decide()
+        public void Decide()
         {
             Branch.Decide();
         }

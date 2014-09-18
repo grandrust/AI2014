@@ -2,7 +2,7 @@
 
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core
 {
-    interface INode
+    public interface INode
     {
         void Decide();
     }

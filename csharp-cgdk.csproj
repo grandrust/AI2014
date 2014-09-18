@@ -71,10 +71,10 @@
   <ItemGroup>
     <Compile Include="Core\Action.cs" />
     <Compile Include="Core\Decision.cs" />
-    <Compile Include="Core\HokeyNode.cs" />
     <Compile Include="Core\INode.cs" />
-    <Compile Include="Implementation\Actions\TestAction - Copy.cs" />
+    <Compile Include="Implementation\Actions\TestAction1.cs" />
     <Compile Include="Implementation\Actions\TestAction.cs" />
+    <Compile Include="Implementation\Current.cs" />
     <Compile Include="Implementation\Decisions\Decision1.cs" />
     <Compile Include="Model\ActionType.cs" />
     <Compile Include="IStrategy.cs" />

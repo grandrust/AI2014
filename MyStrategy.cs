@@ -1,6 +1,7 @@
 using System;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Decisions;
+using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation;
 
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
     public sealed class MyStrategy : IStrategy {
@@ -11,14 +12,14 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
  
         }
 
-        public void Move(Hockeyist self, World world, Game game, Move move) {
+        public void Move(Hockeyist self, World world, Game game, Move move) 
+        {
+            Current.Move = move;
+            Current.World = world;
+            Current.Hockeyist = self;
+            Current.Game = game;
+
             var decision = new Decision1();
-
-            decision.Move = move;
-            decision.World = world;
-            decision.Hockeyist = self;
-            decision.Game = game;
-
             decision.flag = count > 2000;
 
             decision.Decide();

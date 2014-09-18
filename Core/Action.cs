@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core
 {
-    public abstract class Action : HokeyNode
+    public abstract class Action : INode
     {
-        public override void Decide()
+        public void Decide()
         {
             Do();
         }

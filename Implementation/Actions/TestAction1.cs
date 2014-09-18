@@ -8,6 +8,7 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Actions
 {
     public class TestAction1 : GameAction
     {
+        protected Move Move { get { return Current.Move; } }
         public override void Do()
         {
             Move.SpeedUp = 1.0D;
