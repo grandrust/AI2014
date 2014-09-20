@@ -5,18 +5,17 @@ using GranDrust.AI.Implementation.Actions;
 
 namespace GranDrust.AI.Implementation.Decisions
 {
-    public class Decision1 : Decision
+    public class SmartDecision : Decision
     {
-        public bool flag;
+        public Func<bool> Condition { get; set; }
         protected override INode Branch
         {
             get
             {
-                INode node;
-                if (flag) node = new TestAction();
-                else node = new TestAction1();
+                if (Condition())
+                    return YesNode;
+                return NoNode;
 
-                return node;
 
             }
             set
@@ -24,5 +23,9 @@ namespace GranDrust.AI.Implementation.Decisions
                 throw new NotImplementedException();
             }
         }
+
+        public INode YesNode { get; set; }
+
+        public INode NoNode { get; set; }
     }
 }

@@ -6,14 +6,16 @@ using GameAction = GranDrust.AI.Core.Action;
 
 namespace GranDrust.AI.Implementation.Actions
 {
-    public class TestAction1 : GameAction
+    public class TakePuck : GameAction
     {
         protected Move Move { get { return Current.Move; } }
         public override void Do()
         {
+            var self = Current.Hockeyist;
+
+            Move.Turn = self.GetAngleTo(Current.World.Puck);
             Move.SpeedUp = 1.0D;
-           // Move.Turn = Math.PI;
-            Move.Action = ActionType.Strike;
-        }
+            Move.Action = ActionType.TakePuck;            
+        } 
     }
 }

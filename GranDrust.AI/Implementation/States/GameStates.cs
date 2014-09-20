@@ -15,13 +15,19 @@ namespace GranDrust.AI.Implementation.States
         public static void Init()
         {
             states = new Dictionary<TeamStateType, TeamState>();
+            states.Add(TeamStateType.Occupy, new Occupy());
             states.Add(TeamStateType.Attack, new Attack());
-
-            CurrentState = TeamStateType.Attack;
+            
+            CurrentState = TeamStateType.Occupy;
         }
 
         public static void Play()
         {
+            if (Current.World.Puck.OwnerPlayerId == Current.World.GetMyPlayer().Id)
+                CurrentState = TeamStateType.Attack;
+            else 
+                CurrentState = TeamStateType.Occupy;
+
             states[CurrentState].Start.Decide();
         }
     }

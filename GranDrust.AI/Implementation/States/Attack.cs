@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GranDrust.AI.Core;
 using GranDrust.AI.Core.States;
 using GranDrust.AI.Implementation.Decisions;
+using GranDrust.AI.Implementation.Actions;
 
 namespace GranDrust.AI.Implementation.States
 {
@@ -18,7 +19,16 @@ namespace GranDrust.AI.Implementation.States
 
         private void Init()
         {
-            Start = new Decision1();
+            Start = new SmartDecision()
+            {
+                Condition = () => { 
+                    var opponent = Current.World.GetOpponentPlayer();
+                    return Current.Hockeyist.GetDistanceTo(opponent.NetFront, (opponent.NetBottom - opponent.NetTop) / 2) <= Current.World.Width / 3.0D;
+                },
+                YesNode = new Strike(),
+                NoNode = new MoveToNet()
+
+            };
         }
     }
 }
