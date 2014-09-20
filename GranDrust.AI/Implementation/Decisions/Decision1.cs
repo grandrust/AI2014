@@ -1,8 +1,9 @@
-﻿using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core;
-using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Actions;
-using System;
+﻿using System;
 
-namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Decisions
+using GranDrust.AI.Core;
+using GranDrust.AI.Implementation.Actions;
+
+namespace GranDrust.AI.Implementation.Decisions
 {
     public class Decision1 : Decision
     {

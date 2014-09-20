@@ -1,15 +1,26 @@
 using System;
+using System.Collections.Generic;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
-using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Decisions;
-using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation;
+
+using GranDrust.AI.Core;
+using GranDrust.AI.Core.States;
+using GranDrust.AI.Implementation;
+
+using GranDrust.AI.Implementation.Actions;
+using GranDrust.AI.Implementation.Decisions;
+using GranDrust.AI.Implementation.States;
 
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
-    public sealed class MyStrategy : IStrategy {
-
-        int count = 0;
+    public sealed class MyStrategy : IStrategy
+    {
         public MyStrategy()
         {
- 
+            InitStates();
+        }
+
+        private void InitStates()
+        {
+            GameStates.Init();
         }
 
         public void Move(Hockeyist self, World world, Game game, Move move) 
@@ -19,12 +30,7 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
             Current.Hockeyist = self;
             Current.Game = game;
 
-            var decision = new Decision1();
-            decision.flag = count > 2000;
-
-            decision.Decide();
-
-            count++;
+            GameStates.Play();
         }
     }
 }

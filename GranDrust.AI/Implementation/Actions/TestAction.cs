@@ -1,10 +1,10 @@
 ﻿using System;
-using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core;
+using GranDrust.AI.Core;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
-using GameAction = Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core.Action;
+using GameAction = GranDrust.AI.Core.Action;
 
-namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation.Actions
+namespace GranDrust.AI.Implementation.Actions
 {
     public class TestAction : GameAction
     {

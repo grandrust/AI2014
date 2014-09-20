@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Core
+namespace GranDrust.AI.Core
 {
     public abstract class Decision: INode
     {

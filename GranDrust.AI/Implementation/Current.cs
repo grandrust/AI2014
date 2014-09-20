@@ -1,7 +1,7 @@
 ﻿using System;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
-namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Implementation
+namespace GranDrust.AI.Implementation
 {
     public static class Current
     {

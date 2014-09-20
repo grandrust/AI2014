@@ -69,13 +69,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Action.cs" />
-    <Compile Include="Core\Decision.cs" />
-    <Compile Include="Core\INode.cs" />
-    <Compile Include="Implementation\Actions\TestAction1.cs" />
-    <Compile Include="Implementation\Actions\TestAction.cs" />
-    <Compile Include="Implementation\Current.cs" />
-    <Compile Include="Implementation\Decisions\Decision1.cs" />
+    <Compile Include="GranDrust.AI\Core\Action.cs" />
+    <Compile Include="GranDrust.AI\Core\Decision.cs" />
+    <Compile Include="GranDrust.AI\Core\INode.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\TestAction1.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\TestAction.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Current.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Decisions\Decision1.cs" />
+    <Compile Include="GranDrust.AI\Core\States\TeamState.cs" />
+    <Compile Include="GranDrust.AI\Implementation\States\Attack.cs" />
+    <Compile Include="GranDrust.AI\Implementation\States\GameStates.cs" />
     <Compile Include="Model\ActionType.cs" />
     <Compile Include="IStrategy.cs" />
     <Compile Include="Model\Puck.cs" />
@@ -115,9 +118,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementation\States\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
