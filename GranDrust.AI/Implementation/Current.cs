@@ -1,4 +1,5 @@
 ﻿using System;
+using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
 namespace GranDrust.AI.Implementation
@@ -12,5 +13,7 @@ namespace GranDrust.AI.Implementation
         public static World World { get; set; }
 
         public static Hockeyist Hockeyist { get; set; }
+
+        public static MyStrategy Stratagy { get; set; }
     }
 }

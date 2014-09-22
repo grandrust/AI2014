@@ -13,6 +13,8 @@ using GranDrust.AI.Implementation.States;
 namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
     public sealed class MyStrategy : IStrategy
     {
+        private static Random Rndm = new Random();
+
         public MyStrategy()
         {
             InitStates();
@@ -29,8 +31,23 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
             Current.World = world;
             Current.Hockeyist = self;
             Current.Game = game;
+            Current.Stratagy = this;
 
             GameStates.Play();
+        }
+
+        private int randomSwingCount = 0;
+        private int randomSwingCountCall = 0;
+        public int RandomSwingCount { //TODO: Just for fun
+            get 
+            {
+                if (randomSwingCountCall == randomSwingCount)
+                    randomSwingCount = Rndm.Next(2, 13);
+
+                randomSwingCountCall++;
+
+                return randomSwingCount;
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace GranDrust.AI.Implementation.Actions
             var opponent = Current.World.GetOpponentPlayer();
             
             Move.SpeedUp = 1.0D;
-            Move.Turn = Current.Hockeyist.GetAngleTo(opponent.NetFront, opponent.NetBottom);
+            Move.Turn = Current.Hockeyist.GetAngleTo(opponent.NetFront - 5*Current.World.Puck.Radius, opponent.NetBottom - Current.World.Puck.Radius);
         }
     }
 }

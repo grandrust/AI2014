@@ -18,14 +18,22 @@ namespace GranDrust.AI.Implementation.Decisions
 
 
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public INode YesNode { get; set; }
 
         public INode NoNode { get; set; }
+
+        public SmartDecision Yes(INode node) // TODO: make generic
+        {
+            YesNode = node;
+            return this;
+        }
+
+        public SmartDecision No(INode node)
+        {
+            NoNode = node;
+            return this;
+        }
     }
 }

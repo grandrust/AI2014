@@ -23,7 +23,7 @@ namespace GranDrust.AI.Implementation.States
             {
                 Condition = () => { 
                     var opponent = Current.World.GetOpponentPlayer();
-                    return Current.Hockeyist.GetDistanceTo(opponent.NetFront, (opponent.NetBottom - opponent.NetTop) / 2) <= Current.World.Width / 3.0D;
+                    return Current.Hockeyist.GetDistanceTo(opponent.NetFront, (opponent.NetBottom + opponent.NetTop) / 2) <= Current.World.Width / 2.8D;
                 },
                 YesNode = new Strike(),
                 NoNode = new MoveToNet()

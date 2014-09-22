@@ -72,6 +72,7 @@
     <Compile Include="GranDrust.AI\Core\Action.cs" />
     <Compile Include="GranDrust.AI\Core\Decision.cs" />
     <Compile Include="GranDrust.AI\Core\INode.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\ScriptAction.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\Strike.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\TakePuck.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\MoveToNet.cs" />
