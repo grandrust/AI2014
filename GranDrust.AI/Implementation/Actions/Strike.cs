@@ -3,6 +3,7 @@ using GranDrust.AI.Core;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
 using GameAction = GranDrust.AI.Core.Action;
+using GranDrust.AI.Helpers;
 
 namespace GranDrust.AI.Implementation.Actions
 {
@@ -18,7 +19,7 @@ namespace GranDrust.AI.Implementation.Actions
         public override void Do()  //TODO: move in different INodes
         {
             var opponent = Current.World.GetOpponentPlayer();
-            Hockeyist enemyGoalie = GetEnemyGoalie();
+            Hockeyist enemyGoalie = PlayerHelper.GetEnemyGoalie();
 
             bottomDistance = opponent.NetBottom - enemyGoalie.Y;
             topDistanse = enemyGoalie.Y - opponent.NetTop;
@@ -41,20 +42,5 @@ namespace GranDrust.AI.Implementation.Actions
                 Move.Action = ActionType.Strike;
                      
         }
-
-        private static Hockeyist GetEnemyGoalie()
-        {
-            Hockeyist enemyGoalie = Current.World.Hockeyists[0];
-
-            foreach (var hockeyist in Current.World.Hockeyists)
-            {
-                if (!hockeyist.IsTeammate && hockeyist.Type == HockeyistType.Goalie)
-                {
-                    enemyGoalie = hockeyist;
-                    break;
-                }
-            }
-            return enemyGoalie;
-        } 
     }
 }
