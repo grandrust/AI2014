@@ -3,19 +3,16 @@ using System.Collections.Generic;
 
 using GranDrust.AI.Helpers;
 
-using GameAction = GranDrust.AI.Core.Action;
+using GranDrust.AI.Implementation.Actions.Base;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
 
 namespace GranDrust.AI.Implementation.Actions
 {
-    public class Cover : GameAction
+    public class Cover : ActionBase
     {
-        protected Hockeyist Self { get { return Current.Hockeyist; } }
 
-        protected Move Move { get { return Current.Move; } }
-
-        public override void Do()
+        protected override void Do()
         {
             var myPuckOwner = PlayerHelper.GetPuckOwner();
 

@@ -49,5 +49,7 @@ namespace Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk {
                 return randomSwingCount;
             }
         }
+
+        public TeamStateType State { get; set; }
     }
 }

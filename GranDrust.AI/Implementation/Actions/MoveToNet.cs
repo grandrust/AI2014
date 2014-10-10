@@ -2,17 +2,13 @@
 using GranDrust.AI.Core;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
-using GameAction = GranDrust.AI.Core.Action;
+using GranDrust.AI.Implementation.Actions.Base;
 
 namespace GranDrust.AI.Implementation.Actions
 {
-    public class MoveToNet : GameAction
+    public class MoveToNet : ActionBase
     {
-        protected Move Move { get { return Current.Move; } }
-        protected Hockeyist Self { get { return Current.Hockeyist; } }
-
-
-        public override void Do()
+        protected override void Do()
         {
             var opponent = Current.World.GetOpponentPlayer();
 

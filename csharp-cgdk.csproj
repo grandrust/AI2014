@@ -73,6 +73,12 @@
     <Compile Include="GranDrust.AI\Core\Decision.cs" />
     <Compile Include="GranDrust.AI\Core\INode.cs" />
     <Compile Include="GranDrust.AI\Helpers\PlayerHelper.cs" />
+    <Compile Include="GranDrust.AI\Helpers\UnitHelper.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\Base\ActionBase.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\CoverNet.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\GoToXY.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\StrikePuckOwner.cs" />
+    <Compile Include="GranDrust.AI\Implementation\Actions\TakePass.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\TakeShotPossition.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\GoToSide.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\ScriptAction.cs" />
@@ -85,7 +91,9 @@
     <Compile Include="GranDrust.AI\Implementation\States\Attack.cs" />
     <Compile Include="GranDrust.AI\Implementation\Actions\Cover.cs" />
     <Compile Include="GranDrust.AI\Implementation\States\GameStates.cs" />
+    <Compile Include="GranDrust.AI\Implementation\States\Defense.cs" />
     <Compile Include="GranDrust.AI\Implementation\States\Occupy.cs" />
+    <Compile Include="GranDrust.AI\Implementation\States\SafeNet.cs" />
     <Compile Include="Model\ActionType.cs" />
     <Compile Include="IStrategy.cs" />
     <Compile Include="Model\Puck.cs" />

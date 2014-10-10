@@ -6,6 +6,7 @@ using GranDrust.AI.Core.States;
 using GranDrust.AI.Implementation.Decisions;
 using GranDrust.AI.Implementation.Actions;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
+using GranDrust.AI.Helpers;
 
 namespace GranDrust.AI.Implementation.States
 {
@@ -25,33 +26,66 @@ namespace GranDrust.AI.Implementation.States
                 Condition = () => Current.World.Puck.OwnerHockeyistId == Current.Hockeyist.Id,
                 YesNode = new SmartDecision
                         {
-                            Condition = () => { 
+                            Condition = () =>
+                            {
                                 var opponent = Current.World.GetOpponentPlayer();
-                                return Current.Hockeyist.GetDistanceTo(opponent.NetFront, (opponent.NetBottom + opponent.NetTop) / 2) <= Current.World.Width / 2.8D;
+                                return Current.Hockeyist.GetDistanceTo(opponent.NetFront, PlayerHelper.GetPlayerYCenterNetCoordinate(opponent)) <= Current.World.Width / 2.8D;
                             },
                             YesNode = new SmartDecision
                                     {
-                                        Condition = () => {
+                                        Condition = () =>
+                                        {
                                             var opponent = Current.World.GetOpponentPlayer();
                                             return (Current.Hockeyist.State != HockeyistState.Swinging)
-                                                    && Math.Abs(Current.Hockeyist.X - opponent.NetFront) < Math.Abs((opponent.NetFront - opponent.NetBack) * 2.0D);  //TODO: write out to specific const
+                                                    && Math.Abs(Current.Hockeyist.X - opponent.NetFront) < Math.Abs((opponent.NetFront - opponent.NetBack) * 4.3D);  //TODO: write out to specific const
                                         },
                                         YesNode = new TakeShotPossition(),
+                                        //new SmartDecision {
+                                        //    Condition = () => {
+                                        //        var minDistance = 200.0D;
+
+                                        //        foreach (var hock in Current.World.Hockeyists)
+                                        //        {
+                                        //            if (!hock.IsTeammate && hock.Type != HockeyistType.Goalie)
+                                        //            {
+                                        //                var nd = Current.World.Puck.GetDistanceTo(hock);
+
+                                        //                if (minDistance > nd)
+                                        //                    minDistance = nd;
+                                        //            }
+                                        //        }
+
+                                        //        return minDistance < Current.Hockeyist.Radius + 0.5D + Current.Game.StickLength;
+
+                                        //    },
+                                            
+                                        //    YesNode = new TakePass(),
+                                        //    NoNode = new TakeShotPossition()
+                                        //},
                                         NoNode = new Strike()
 
-                                    },                            
+                                    },
                             NoNode = new SmartDecision
-                                    {
-                                        Condition = () => {
-                                            var opponent = Current.World.GetOpponentPlayer();
-                                            return (opponent.NetBottom > Current.Hockeyist.Y && Current.Hockeyist.Y > opponent.NetTop);
-                                        },
-                                        YesNode = new GoToSide(),
-                                        NoNode =  new MoveToNet()
-                                    }
+                            {
+                                Condition = () => Current.Hockeyist.State == HockeyistState.Swinging,
+                                YesNode = GameStates.CancelStrikeAction,
+                                NoNode =  new SmartDecision
+                                            {
+                                                Condition = () =>
+                                                {
+                                                    var opponent = Current.World.GetOpponentPlayer();
+                                                    var futureY = Current.Hockeyist.Y + 4.0D * Current.Hockeyist.SpeedY;
+                                                    return (opponent.NetBottom > futureY && futureY > opponent.NetTop);
+                                                },
+                                                YesNode = new GoToSide(),
+                                                NoNode = new MoveToNet()
+                                            }
+
+                            }
 
                         },
-                NoNode = new Cover()
+                NoNode =
+                  new Cover()
             };
         }
     }

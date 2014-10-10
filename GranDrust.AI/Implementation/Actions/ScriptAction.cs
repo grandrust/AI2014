@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using GameAction = GranDrust.AI.Core.Action;
+using GranDrust.AI.Implementation.Actions.Base;
 
 namespace GranDrust.AI.Implementation.Actions
 {
-    public class ScriptAction : GameAction
+    public class ScriptAction : ActionBase
     {
-        public Action Action { get; set; } 
+        public Action Action { get; set; }
 
-        public override void Do()
+        protected override void Do()
         {
             Action();
         }

@@ -8,18 +8,37 @@ namespace GranDrust.AI.Helpers
     {
         public static Hockeyist GetEnemyGoalie()
         {
-            Hockeyist enemyGoalie = Current.World.Hockeyists[0];
+            return GetGoalie(false);
+        }
+
+        public static Hockeyist GetMyGoalie()
+        {
+            return GetGoalie(true);
+        }
+
+        private static Hockeyist GetGoalie(bool isTeammate)
+        {
+            Hockeyist goalie = null;
 
             foreach (var hockeyist in Current.World.Hockeyists)
             {
-                if (!hockeyist.IsTeammate && hockeyist.Type == HockeyistType.Goalie)
+                if (hockeyist.IsTeammate == isTeammate && hockeyist.Type == HockeyistType.Goalie)
                 {
-                    enemyGoalie = hockeyist;
+                    goalie = hockeyist;
                     break;
                 }
             }
-            return enemyGoalie;
+            return goalie;
         }
+
+        public static bool IsFreezeTime()
+        {
+            var me = Current.World.GetMyPlayer();
+            var opponent = Current.World.GetOpponentPlayer();
+
+            return (me.IsJustMissedGoal && opponent.IsJustScoredGoal) || (me.IsJustScoredGoal && opponent.IsJustMissedGoal);
+        }
+        
 
         public static Hockeyist GetPuckOwner()
         {
@@ -38,8 +57,30 @@ namespace GranDrust.AI.Helpers
                 }
             }
 
-            return puckOwner;
- 
+            return puckOwner; 
+        }
+
+        public static int GetTeammatesCount()
+        {
+            var goaliesCount = GetMyGoalie() != null ? 2 : 0;
+            return (Current.World.Hockeyists.Length - goaliesCount) / 2;
+        }
+
+        public static double GetMyYCenterNetCoordinate()
+        {
+            var me = Current.World.GetMyPlayer();
+            return GetPlayerYCenterNetCoordinate(me);
+        }
+
+        public static double GetOpponentYCenterNetCoordinate()
+        {
+            var opponent = Current.World.GetOpponentPlayer();
+            return GetPlayerYCenterNetCoordinate(opponent);
+        }
+
+        public static double GetPlayerYCenterNetCoordinate(Player player)
+        {
+            return (player.NetBottom + player.NetTop) / 2.0D;
         }
     }
 }

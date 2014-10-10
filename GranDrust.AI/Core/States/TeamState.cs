@@ -7,7 +7,8 @@ namespace GranDrust.AI.Core.States
     {
         Attack,
         Defense,
-        Occupy
+        Occupy,
+        SafeNet
     }
 
     public class TeamState

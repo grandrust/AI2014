@@ -2,20 +2,17 @@
 using GranDrust.AI.Core;
 using Com.CodeGame.CodeHockey2014.DevKit.CSharpCgdk.Model;
 
-using GameAction = GranDrust.AI.Core.Action;
+using GranDrust.AI.Implementation.Actions.Base;
 
 namespace GranDrust.AI.Implementation.Actions
 {
-    public class TakePuck : GameAction
+    public class TakePuck : ActionBase
     {
-        protected Move Move { get { return Current.Move; } }
-        public override void Do()
+        protected override void Do()
         {
-            var self = Current.Hockeyist;
-
-            Move.Turn = self.GetAngleTo(Current.World.Puck);
+            Move.Turn = Self.GetAngleTo(Current.World.Puck);
             Move.SpeedUp = 1.0D;
-            Move.Action = ActionType.TakePuck;            
-        } 
+            Move.Action = ActionType.TakePuck;
+        }
     }
 }

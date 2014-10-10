@@ -9,6 +9,6 @@ namespace GranDrust.AI.Core
             Do();
         }
 
-        public abstract void Do();
+        protected abstract void Do();
     }
 }

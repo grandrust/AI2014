@@ -15,5 +15,7 @@ namespace GranDrust.AI.Implementation
         public static Hockeyist Hockeyist { get; set; }
 
         public static MyStrategy Stratagy { get; set; }
+
+        public static int SaferCount { get; set; }
     }
 }
